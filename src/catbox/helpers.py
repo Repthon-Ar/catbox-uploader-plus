@@ -17,6 +17,10 @@ from .exceptions import (
 CATBOX_API_URL = "https://catbox.moe/user/api.php"
 LITTERBOX_API_URL = "https://litterbox.catbox.moe/resources/internals/api.php"
 LITTERBOX_EXPIRATION_TIMES = {"1h", "12h", "24h", "72h", "1w"}
+DEFAULT_HEADERS = {
+    "User-Agent": "CatboxUploaderPlus/2.9.1",
+    "Accept": "*/*",
+}
 
 def _prepare_upload(file_path_or_bytes, stack, file_name=None):
     """Prepare a multipart upload value without closing caller-owned streams."""
@@ -54,6 +58,7 @@ def _post(url, *, data=None, files=None, timeout=30, operation="Request"):
             url,
             data=data,
             files=files,
+            headers=DEFAULT_HEADERS,
             timeout=timeout,
         )
         response.raise_for_status()
