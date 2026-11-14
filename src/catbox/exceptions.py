@@ -1,19 +1,30 @@
+"""Custom exceptions used by Catbox Uploader Plus."""
+
+
 class CatboxError(Exception):
-    """Base exception for Catbox errors."""
-    pass
+    """Base exception for all Catbox Uploader Plus errors."""
+
 
 class FileNotFoundError(CatboxError):
-    """Exception raised when a file is not found."""
-    pass
+    """Raised when the requested upload file does not exist."""
+
 
 class TimeoutError(CatboxError):
-    """Exception raised when the request times out."""
-    pass
+    """Raised when a Catbox request exceeds its configured timeout."""
+
 
 class ConnectionError(CatboxError):
-    """Exception raised when there is a connection error."""
-    pass
+    """Raised when a connection to Catbox or Litterbox fails."""
+
 
 class HTTPError(CatboxError):
-    """Exception raised for HTTP errors."""
-    pass
+    """Raised when the remote service returns an unsuccessful HTTP response."""
+
+
+__all__ = [
+    "CatboxError",
+    "FileNotFoundError",
+    "TimeoutError",
+    "ConnectionError",
+    "HTTPError",
+]
